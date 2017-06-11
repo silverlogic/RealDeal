@@ -18,7 +18,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     fileprivate var mainNode: SCNNode!
     fileprivate weak var logoView: LogoPartsView?
     fileprivate var requestLock = false
+    fileprivate var checkingFrame: ARFrame?
     fileprivate var timer = Timer()
+    fileprivate var offers = [Offer]()
+    fileprivate var showedMerchants: [OffersMerchants] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +37,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewDidAppear(animated)
         setupSession()
         // @TODO: Temporary test deals icons
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.add(.dealfree, position: SCNVector3(-1, 0, -3.8))
-            self.add(.deal10, position: SCNVector3(0, 0, -4))
-            self.add(.deal20, position: SCNVector3(1, 0, -3.8))
-            self.add(.deal30, position: SCNVector3(3, 0, -3))
-            self.add(.deal40, position: SCNVector3(5, 0, 0))
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            self.add(.dealfree, position: SCNVector3(-1, 0, -3.8))
+//            self.add(.deal10, position: SCNVector3(0, 0, -4))
+//            self.add(.deal20, position: SCNVector3(1, 0, -3.8))
+//            self.add(.deal30, position: SCNVector3(3, 0, -3))
+//            self.add(.deal40, position: SCNVector3(5, 0, 0))
+//        }
         guard let logoView = logoView else { return }
         view.bringSubview(toFront: logoView)
         logoView.open(completion: { [weak logoView] (success) in
@@ -51,6 +54,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         session.pause()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        var hitTestOptions = [SCNHitTestOption: Any]()
+        hitTestOptions[SCNHitTestOption.boundingBoxOnly] = true
+        let results: [SCNHitTestResult] = sceneView.hitTest(touches.first!.location(in: sceneView), options: hitTestOptions)
+        for result in results {
+            var node = result.node
+            var object1: VirtualObject?
+            while node.parent != nil {
+                if let parent = node.parent as? VirtualObject {
+                    object1 = parent
+                    break
+                }
+                node = node.parent!
+            }
+            guard let object = object1 else { continue }
+            let wrapperNode = VirtualObject.convert(object)
+            DispatchQueue.main.async {
+                object.removeFromParentNode()
+                self.setNewVirtualObjectPosition(object.position, wrapperNode)
+                self.mainNode.addChildNode(wrapperNode)
+            }
+        }
     }
 }
 
@@ -77,7 +105,29 @@ extension ViewController: ARSessionDelegate {
             // Send out request and cache the image
             let networkClient = NetworkClient()
             networkClient.postMerchantIcon(image, success: { (merchants) in
-                print("\(merchants)")
+                for merchant in merchants {
+                    print(merchant.name)
+                    guard let offerMerchant = OffersMerchants(rawValue: merchant.name) else { continue }
+                    if self.showedMerchants.contains(offerMerchant) {
+                        continue
+                    }
+                    self.showedMerchants.append(offerMerchant)
+                    let offers = OffersManager.shared.offersForMerchant(merchant.name)
+                    if self.offers.contains(where: { $0.merchants.contains(merchant.name) }) {
+                        // Don't do anything since we already check this merchant
+                        continue
+                    }
+                    self.offers.append(contentsOf: offers)
+                    // Need to add popup to merchant
+                    let angles = frame.camera.eulerAngles
+                    let position = SCNVector3.positionFromTransform(frame.camera.transform)
+                    let defaultDistance: Float = 4
+                    let z1 = position.z - sin(angles.y + Float.pi/2) * defaultDistance
+                    let x1 = position.x + cos(angles.y + Float.pi/2) * defaultDistance
+                    DispatchQueue.main.async {
+                        self.add(.dealfree, position: SCNVector3(x1, -1.3, z1))
+                    }
+                }
                 self.requestLock = false
                 session.delegate = self
             }, failure: { (error) in
@@ -96,13 +146,7 @@ fileprivate extension ViewController {
     /// Adds SCNNode to the current scene.
     func add(_ deal: Deals, position: SCNVector3) {
         DispatchQueue.global().async {
-            let scene = SCNScene(named: "art.scnassets/" + deal.rawValue)!
-            let wrapperNode = SCNNode()
-            for child in scene.rootNode.childNodes {
-                child.geometry?.firstMaterial?.lightingModel = .physicallyBased
-                child.movabilityHint = .movable
-                wrapperNode.addChildNode(child)
-            }
+            let wrapperNode = VirtualObject(deal)
             DispatchQueue.main.async {
                 self.setNewVirtualObjectPosition(position, wrapperNode)
                 self.mainNode.addChildNode(wrapperNode)
@@ -131,7 +175,7 @@ fileprivate extension ViewController {
     
     func setupSession() {
         let configuration = ARWorldTrackingSessionConfiguration()
-        //        configuration.planeDetection = .horizontal
+//        configuration.planeDetection = .horizontal
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
@@ -173,10 +217,9 @@ fileprivate extension ViewController {
     }
 }
 
-enum Deals: String {
-    case dealfree = "dealfree.scn"
-    case deal10 = "deal10.scn"
-    case deal20 = "deal20.scn"
-    case deal30 = "deal30.scn"
-    case deal40 = "deal40.scn"
+enum OffersMerchants: String {
+    case walmart = "Walmart"
+    case bath = "Bath and Body Works"
+    case target = "Target"
 }
+
