@@ -125,15 +125,15 @@ extension ViewController: ARSessionDelegate {
                     let offset: Float = 0.5
                     let z1 = position.z - sin(angles.y + Float.pi/2) * defaultDistance - sin(angles.y + Float.pi) * offset
                     let x1 = position.x + cos(angles.y + Float.pi/2) * defaultDistance + cos(angles.y + Float.pi) * offset
-                    
+                    let dealoffset: Float = 0.0
                     DispatchQueue.main.async {
                         switch offerMerchant {
                         case .walmart:
-                            self.add(.dealfree, position: SCNVector3(x1, -2 * offset, z1))
+                            self.add(.dealfree, position: SCNVector3(x1, dealoffset, z1))
                         case .bath:
-                            self.add(.deal30, position: SCNVector3(x1, -2 * offset, z1))
+                            self.add(.deal30, position: SCNVector3(x1, dealoffset, z1))
                         case .target:
-                            self.add(.deal10, position: SCNVector3(x1, -2 * offset, z1))
+                            self.add(.deal10, position: SCNVector3(x1, dealoffset, z1))
                         }
                     }
                 }
