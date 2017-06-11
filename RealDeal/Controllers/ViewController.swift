@@ -121,11 +121,18 @@ extension ViewController: ARSessionDelegate {
                     // Need to add popup to merchant
                     let angles = frame.camera.eulerAngles
                     let position = SCNVector3.positionFromTransform(frame.camera.transform)
-                    let defaultDistance: Float = 4
+                    let defaultDistance: Float = 2
                     let z1 = position.z - sin(angles.y + Float.pi/2) * defaultDistance
                     let x1 = position.x + cos(angles.y + Float.pi/2) * defaultDistance
                     DispatchQueue.main.async {
-                        self.add(.dealfree, position: SCNVector3(x1, -1.3, z1))
+                        switch offerMerchant {
+                        case .walmart:
+                            self.add(.dealfree, position: SCNVector3(x1, -0.3, z1))
+                        case .bath:
+                            self.add(.deal30, position: SCNVector3(x1, -0.3, z1))
+                        case .target:
+                            self.add(.deal10, position: SCNVector3(x1, -0.3, z1))
+                        }
                     }
                 }
                 self.requestLock = false
