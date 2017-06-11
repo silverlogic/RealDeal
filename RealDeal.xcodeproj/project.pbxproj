@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D6958A41EED572A00F7603B /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6958A31EED572A00F7603B /* VirtualObject.swift */; };
 		4DB74AB51EEC8C8B00DC970D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB74AB41EEC8C8800DC970D /* Utilities.swift */; };
 		4DB74AB71EECAC9A00DC970D /* LogoPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB74AB61EECAC9A00DC970D /* LogoPartsView.swift */; };
 		8839F0D61EECF72800B0EC36 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8839F0D51EECF72800B0EC36 /* NetworkClient.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		3DF0CEB4613286AE322CD73D /* Pods-RealDeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealDeal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealDeal/Pods-RealDeal.debug.xcconfig"; sourceTree = "<group>"; };
+		4D6958A31EED572A00F7603B /* VirtualObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
 		4DB74AB41EEC8C8800DC970D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		4DB74AB61EECAC9A00DC970D /* LogoPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPartsView.swift; sourceTree = "<group>"; };
 		837BC05258B7836F91C99521 /* Pods-RealDeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealDeal.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealDeal/Pods-RealDeal.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				88F877631EECE27E003CFD04 /* Merchant.swift */,
 				8839F0D71EED150300B0EC36 /* Offer.swift */,
+				4D6958A31EED572A00F7603B /* VirtualObject.swift */,
 			);
 			path = EntityModels;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				8839F0DA1EED196500B0EC36 /* OffersManager.swift in Sources */,
 				88BC26961EEC5078003FC70D /* ViewController.swift in Sources */,
 				88BC26921EEC5078003FC70D /* AppDelegate.swift in Sources */,
+				4D6958A41EED572A00F7603B /* VirtualObject.swift in Sources */,
 				88F877641EECE27E003CFD04 /* Merchant.swift in Sources */,
 				8839F0D61EECF72800B0EC36 /* NetworkClient.swift in Sources */,
 				8839F0D81EED150300B0EC36 /* Offer.swift in Sources */,
