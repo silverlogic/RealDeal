@@ -9,17 +9,31 @@
 /* Begin PBXBuildFile section */
 		4DB74AB51EEC8C8B00DC970D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB74AB41EEC8C8800DC970D /* Utilities.swift */; };
 		4DB74AB71EECAC9A00DC970D /* LogoPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB74AB61EECAC9A00DC970D /* LogoPartsView.swift */; };
+		8839F0D61EECF72800B0EC36 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8839F0D51EECF72800B0EC36 /* NetworkClient.swift */; };
+		8839F0D81EED150300B0EC36 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8839F0D71EED150300B0EC36 /* Offer.swift */; };
+		8839F0DA1EED196500B0EC36 /* OffersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8839F0D91EED196500B0EC36 /* OffersManager.swift */; };
 		88BC26921EEC5078003FC70D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC26911EEC5078003FC70D /* AppDelegate.swift */; };
 		88BC26941EEC5078003FC70D /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 88BC26931EEC5078003FC70D /* art.scnassets */; };
 		88BC26961EEC5078003FC70D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC26951EEC5078003FC70D /* ViewController.swift */; };
 		88BC26991EEC5078003FC70D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88BC26971EEC5078003FC70D /* Main.storyboard */; };
 		88BC269B1EEC5078003FC70D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88BC269A1EEC5078003FC70D /* Assets.xcassets */; };
 		88BC269E1EEC5078003FC70D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88BC269C1EEC5078003FC70D /* LaunchScreen.storyboard */; };
+		88BC26AA1EEC8825003FC70D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BC26A91EEC878C003FC70D /* libz.tbd */; };
+		88BC27211EEC8F57003FC70D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BC27201EEC8F46003FC70D /* CoreImage.framework */; };
+		88BC27221EEC8F66003FC70D /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BC271F1EEC8F32003FC70D /* libstdc++.6.0.9.tbd */; };
+		88E95DC71EEC949C005493E9 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 88E95DC61EEC949C005493E9 /* tessdata */; };
+		88F877641EECE27E003CFD04 /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F877631EECE27E003CFD04 /* Merchant.swift */; };
+		B8D5DB23787C0ACECF50FF0E /* Pods_RealDeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05A5084D7FB6059E2CD0802 /* Pods_RealDeal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DF0CEB4613286AE322CD73D /* Pods-RealDeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealDeal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealDeal/Pods-RealDeal.debug.xcconfig"; sourceTree = "<group>"; };
 		4DB74AB41EEC8C8800DC970D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		4DB74AB61EECAC9A00DC970D /* LogoPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPartsView.swift; sourceTree = "<group>"; };
+		837BC05258B7836F91C99521 /* Pods-RealDeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealDeal.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealDeal/Pods-RealDeal.release.xcconfig"; sourceTree = "<group>"; };
+		8839F0D51EECF72800B0EC36 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		8839F0D71EED150300B0EC36 /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
+		8839F0D91EED196500B0EC36 /* OffersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersManager.swift; sourceTree = "<group>"; };
 		88BC268E1EEC5078003FC70D /* RealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88BC26911EEC5078003FC70D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88BC26931EEC5078003FC70D /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -28,6 +42,12 @@
 		88BC269A1EEC5078003FC70D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88BC269D1EEC5078003FC70D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88BC269F1EEC5078003FC70D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88BC26A91EEC878C003FC70D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		88BC271F1EEC8F32003FC70D /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		88BC27201EEC8F46003FC70D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		88E95DC61EEC949C005493E9 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
+		88F877631EECE27E003CFD04 /* Merchant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
+		D05A5084D7FB6059E2CD0802 /* Pods_RealDeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealDeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +55,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88BC27221EEC8F66003FC70D /* libstdc++.6.0.9.tbd in Frameworks */,
+				88BC27211EEC8F57003FC70D /* CoreImage.framework in Frameworks */,
+				88BC26AA1EEC8825003FC70D /* libz.tbd in Frameworks */,
+				B8D5DB23787C0ACECF50FF0E /* Pods_RealDeal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		134295CEA304BB391F98DFDA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88BC27201EEC8F46003FC70D /* CoreImage.framework */,
+				88BC271F1EEC8F32003FC70D /* libstdc++.6.0.9.tbd */,
+				88BC26A91EEC878C003FC70D /* libz.tbd */,
+				D05A5084D7FB6059E2CD0802 /* Pods_RealDeal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		88BC26851EEC5078003FC70D = {
 			isa = PBXGroup;
 			children = (
 				88BC26901EEC5078003FC70D /* RealDeal */,
 				88BC268F1EEC5078003FC70D /* Products */,
+				E124134A7ED18C26780F4E82 /* Pods */,
+				134295CEA304BB391F98DFDA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +105,7 @@
 				88BC26931EEC5078003FC70D /* art.scnassets */,
 				88BC269A1EEC5078003FC70D /* Assets.xcassets */,
 				88BC269F1EEC5078003FC70D /* Info.plist */,
+				88E95DC61EEC949C005493E9 /* tessdata */,
 			);
 			path = RealDeal;
 			sourceTree = "<group>";
@@ -76,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				4DB74AB41EEC8C8800DC970D /* Utilities.swift */,
+				88F877621EECE25A003CFD04 /* Services */,
+				88F877611EECE24E003CFD04 /* EntityModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -105,6 +145,33 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		88F877611EECE24E003CFD04 /* EntityModels */ = {
+			isa = PBXGroup;
+			children = (
+				88F877631EECE27E003CFD04 /* Merchant.swift */,
+				8839F0D71EED150300B0EC36 /* Offer.swift */,
+			);
+			path = EntityModels;
+			sourceTree = "<group>";
+		};
+		88F877621EECE25A003CFD04 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8839F0D51EECF72800B0EC36 /* NetworkClient.swift */,
+				8839F0D91EED196500B0EC36 /* OffersManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E124134A7ED18C26780F4E82 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3DF0CEB4613286AE322CD73D /* Pods-RealDeal.debug.xcconfig */,
+				837BC05258B7836F91C99521 /* Pods-RealDeal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -112,9 +179,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88BC26A21EEC5078003FC70D /* Build configuration list for PBXNativeTarget "RealDeal" */;
 			buildPhases = (
+				4D525630D1DE5039D3DEC9BD /* [CP] Check Pods Manifest.lock */,
 				88BC268A1EEC5078003FC70D /* Sources */,
 				88BC268B1EEC5078003FC70D /* Frameworks */,
 				88BC268C1EEC5078003FC70D /* Resources */,
+				5522C902C00D4816816F3B7A /* [CP] Embed Pods Frameworks */,
+				52FFA471342CA9A2B6459612 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,6 +207,7 @@
 				TargetAttributes = {
 					88BC268D1EEC5078003FC70D = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -165,12 +236,61 @@
 			files = (
 				88BC26941EEC5078003FC70D /* art.scnassets in Resources */,
 				88BC269E1EEC5078003FC70D /* LaunchScreen.storyboard in Resources */,
+				88E95DC71EEC949C005493E9 /* tessdata in Resources */,
 				88BC269B1EEC5078003FC70D /* Assets.xcassets in Resources */,
 				88BC26991EEC5078003FC70D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4D525630D1DE5039D3DEC9BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		52FFA471342CA9A2B6459612 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealDeal/Pods-RealDeal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5522C902C00D4816816F3B7A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealDeal/Pods-RealDeal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		88BC268A1EEC5078003FC70D /* Sources */ = {
@@ -179,8 +299,12 @@
 			files = (
 				4DB74AB71EECAC9A00DC970D /* LogoPartsView.swift in Sources */,
 				4DB74AB51EEC8C8B00DC970D /* Utilities.swift in Sources */,
+				8839F0DA1EED196500B0EC36 /* OffersManager.swift in Sources */,
 				88BC26961EEC5078003FC70D /* ViewController.swift in Sources */,
 				88BC26921EEC5078003FC70D /* AppDelegate.swift in Sources */,
+				88F877641EECE27E003CFD04 /* Merchant.swift in Sources */,
+				8839F0D61EECF72800B0EC36 /* NetworkClient.swift in Sources */,
+				8839F0D81EED150300B0EC36 /* Offer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +360,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -291,6 +416,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -311,13 +437,18 @@
 		};
 		88BC26A31EEC5078003FC70D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DF0CEB4613286AE322CD73D /* Pods-RealDeal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RealDeal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.RealDeal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -325,13 +456,17 @@
 		};
 		88BC26A41EEC5078003FC70D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 837BC05258B7836F91C99521 /* Pods-RealDeal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RealDeal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.RealDeal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

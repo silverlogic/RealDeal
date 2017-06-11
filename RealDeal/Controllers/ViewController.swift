@@ -11,12 +11,14 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
-
+    
     @IBOutlet var sceneView: ARSCNView!
     fileprivate let session = ARSession()
     
     fileprivate var mainNode: SCNNode!
     fileprivate weak var logoView: LogoPartsView?
+    fileprivate var requestLock = false
+    fileprivate var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 }
 
 
+// MARK: - ARSessionDelegate
+extension ViewController: ARSessionDelegate {
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        if requestLock { return }
+        requestLock = true
+        // Perform image transformation on separate thread
+        DispatchQueue.global().async {
+            //self.lastImage = CIImage(cvImageBuffer: frame.capturedImage)
+            //
+            self.timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { (timer) in
+                self.requestLock = false
+            })
+        }
+    }
+}
+
+
 // MARK: - Private Instance Methods
 fileprivate extension ViewController {
     
@@ -76,12 +95,13 @@ fileprivate extension ViewController {
     func setupSceneView() {
         sceneView.session = session
         sceneView.delegate = self
+        sceneView.session.delegate = self
         sceneView.antialiasingMode = .multisampling4X
         sceneView.automaticallyUpdatesLighting = false
         sceneView.preferredFramesPerSecond = 60
         sceneView.contentScaleFactor = 1.3
-//        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
-//        sceneView.showsStatistics = true
+        //        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        //        sceneView.showsStatistics = true
         if let camera = sceneView.pointOfView?.camera {
             camera.wantsHDR = true
             camera.wantsExposureAdaptation = true
@@ -93,7 +113,7 @@ fileprivate extension ViewController {
     
     func setupSession() {
         let configuration = ARWorldTrackingSessionConfiguration()
-//        configuration.planeDetection = .horizontal
+        //        configuration.planeDetection = .horizontal
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
