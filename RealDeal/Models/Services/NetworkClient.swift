@@ -24,7 +24,9 @@ final class NetworkClient {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                let logoAnnotations = json["responses"][0].arrayValue
+                let responses = json["responses"].arrayValue
+                let responseNode = responses[0]
+                let logoAnnotations = responseNode["logoAnnotations"].arrayValue
                 var merchants = [Merchant]()
                 for subJson in logoAnnotations {
                     let name = subJson["description"].stringValue
@@ -37,6 +39,7 @@ final class NetworkClient {
                     }
                     merchants.append(Merchant(name: name, vertices: points))
                 }
+                print("\(merchants)")
                 success(merchants)
                 break
             case .failure(let error):

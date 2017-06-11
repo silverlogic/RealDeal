@@ -60,12 +60,30 @@ extension ViewController: ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         if requestLock { return }
         requestLock = true
+        session.delegate = nil
         // Perform image transformation on separate thread
-        DispatchQueue.global().async {
-            //self.lastImage = CIImage(cvImageBuffer: frame.capturedImage)
-            //
-            self.timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { (timer) in
+        DispatchQueue.global(qos: .background).async {
+            //let transform = frame.displayTransform(withViewportSize: CGSize(width: 1000, height: 1333), orientation: .portrait)
+            let ciImage = CIImage(cvImageBuffer: frame.capturedImage)
+            //let transformImage = ciImage.applying(transform)
+            let context = CIContext(options: nil)
+            guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else {
+                print("Can't get CGImage")
                 self.requestLock = false
+                session.delegate = self
+                return
+            }
+            let image = UIImage(cgImage: cgImage)
+            // Send out request and cache the image
+            let networkClient = NetworkClient()
+            networkClient.postMerchantIcon(image, success: { (merchants) in
+                print("\(merchants)")
+                self.requestLock = false
+                session.delegate = self
+            }, failure: { (error) in
+                print("Error checking merchant icon")
+                self.requestLock = false
+                session.delegate = self
             })
         }
     }
