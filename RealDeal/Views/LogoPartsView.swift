@@ -33,14 +33,16 @@ class LogoPartsView: UIView {
 // MARK: - Public Instance Methods
 extension LogoPartsView {
     func open(completion: ((_ success: Bool) -> Void)?) {
-        UIView.animate(withDuration: 1.5, animations: {
-            self.revertLogo(self.logoPart_tl, xAxis: true, yAxis: true)
-            self.revertLogo(self.logoPart_tr, xAxis: false, yAxis: true)
-            self.revertLogo(self.logoPart_bl, xAxis: true, yAxis: false)
-            self.revertLogo(self.logoPart_br, xAxis: false, yAxis: false)
-        }, completion: { (success) in
-            completion?(success)
-        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            UIView.animate(withDuration: 2.5, animations: {
+                self.revertLogo(self.logoPart_tl, xAxis: true, yAxis: true)
+                self.revertLogo(self.logoPart_tr, xAxis: false, yAxis: true)
+                self.revertLogo(self.logoPart_bl, xAxis: true, yAxis: false)
+                self.revertLogo(self.logoPart_br, xAxis: false, yAxis: false)
+            }, completion: { (success) in
+                completion?(success)
+            })
+        }
     }
 }
 
