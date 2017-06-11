@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DB74AB51EEC8C8B00DC970D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB74AB41EEC8C8800DC970D /* Utilities.swift */; };
+		4DB74AB71EECAC9A00DC970D /* LogoPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB74AB61EECAC9A00DC970D /* LogoPartsView.swift */; };
 		88BC26921EEC5078003FC70D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC26911EEC5078003FC70D /* AppDelegate.swift */; };
 		88BC26941EEC5078003FC70D /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 88BC26931EEC5078003FC70D /* art.scnassets */; };
 		88BC26961EEC5078003FC70D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BC26951EEC5078003FC70D /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4DB74AB41EEC8C8800DC970D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		4DB74AB61EECAC9A00DC970D /* LogoPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPartsView.swift; sourceTree = "<group>"; };
 		88BC268E1EEC5078003FC70D /* RealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88BC26911EEC5078003FC70D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88BC26931EEC5078003FC70D /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 		88BC26A51EEC50B9003FC70D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4DB74AB41EEC8C8800DC970D /* Utilities.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -78,6 +83,7 @@
 		88BC26A61EEC50C3003FC70D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4DB74AB61EECAC9A00DC970D /* LogoPartsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -171,6 +177,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB74AB71EECAC9A00DC970D /* LogoPartsView.swift in Sources */,
+				4DB74AB51EEC8C8B00DC970D /* Utilities.swift in Sources */,
 				88BC26961EEC5078003FC70D /* ViewController.swift in Sources */,
 				88BC26921EEC5078003FC70D /* AppDelegate.swift in Sources */,
 			);
@@ -348,6 +356,7 @@
 				88BC26A41EEC5078003FC70D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
