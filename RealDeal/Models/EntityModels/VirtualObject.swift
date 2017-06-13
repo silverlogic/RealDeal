@@ -50,6 +50,7 @@ enum Deals: String {
     case deal20L = "deal20L.scn"
     case deal30L = "deal30L.scn"
     case deal40L = "deal40L.scn"
+    case atmarrow = "atmarrow.scn"
     
     func nextOne() -> Deals {
         switch self {
@@ -73,6 +74,8 @@ enum Deals: String {
             return .deal40
         case .dealfreeL:
             return .dealfree
+        case .atmarrow:
+            return self
         }
     }
 }

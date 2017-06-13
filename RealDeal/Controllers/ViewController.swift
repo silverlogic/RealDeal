@@ -22,6 +22,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     fileprivate var timer = Timer()
     fileprivate var offers = [Offer]()
     fileprivate var showedMerchants: [OffersMerchants] = []
+    fileprivate var atmArrow: VirtualObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +37,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupSession()
-        // @TODO: Temporary test deals icons
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//            self.add(.dealfree, position: SCNVector3(-1, 0, -3.8))
-//            self.add(.deal10, position: SCNVector3(0, 0, -4))
-//            self.add(.deal20, position: SCNVector3(1, 0, -3.8))
-//            self.add(.deal30, position: SCNVector3(3, 0, -3))
-//            self.add(.deal40, position: SCNVector3(5, 0, 0))
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            //guard let cameraTransform = self.session.currentFrame?.camera.transform else { return }
+            //let cameraPosition = SCNVector3.positionFromTransform(cameraTransform)
+            self.atmArrow = self.add(.atmarrow, position: SCNVector3(0, -0.3, -1), toCamera: true)
+        }
         guard let logoView = logoView else { return }
         view.bringSubview(toFront: logoView)
         logoView.open(completion: { [weak logoView] (success) in
@@ -86,6 +84,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 // MARK: - ARSessionDelegate
 extension ViewController: ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        self.atmArrow?.removeFromParentNode()
+        self.atmArrow = self.add(.atmarrow, position: SCNVector3(0, -0.3, -1), toCamera: true)
         if requestLock { return }
         requestLock = true
         session.delegate = nil
@@ -125,7 +125,7 @@ extension ViewController: ARSessionDelegate {
                     let offset: Float = 0.5
                     let z1 = position.z - sin(angles.y + Float.pi/2) * defaultDistance - sin(angles.y + Float.pi) * offset
                     let x1 = position.x + cos(angles.y + Float.pi/2) * defaultDistance + cos(angles.y + Float.pi) * offset
-                    let dealoffset: Float = 0.0
+                    let dealoffset: Float = -offset
                     DispatchQueue.main.async {
                         switch offerMerchant {
                         case .walmart:
@@ -153,14 +153,15 @@ extension ViewController: ARSessionDelegate {
 fileprivate extension ViewController {
     
     /// Adds SCNNode to the current scene.
-    func add(_ deal: Deals, position: SCNVector3) {
+    func add(_ deal: Deals, position: SCNVector3, toCamera: Bool = false) -> VirtualObject {
+        let wrapperNode = VirtualObject(deal)
         DispatchQueue.global().async {
-            let wrapperNode = VirtualObject(deal)
             DispatchQueue.main.async {
-                self.setNewVirtualObjectPosition(position, wrapperNode)
+                self.setNewVirtualObjectPosition(position, wrapperNode, toCanera: toCamera)
                 self.mainNode.addChildNode(wrapperNode)
             }
         }
+        return wrapperNode
     }
     
     func setupSceneView() {
@@ -203,7 +204,21 @@ fileprivate extension ViewController {
         mainNode.removeFromParentNode()
     }
     
-    func setNewVirtualObjectPosition(_ pos: SCNVector3, _ object: SCNNode) {
+    func setNewVirtualObjectPosition(_ pos: SCNVector3, _ object: SCNNode, toCanera: Bool = false) {
+        if toCanera {
+            object.position = pos
+//            if pos == 0 {
+//                return
+//            }
+//            let tgA: Double =  Double(cameraToPosition.z) / Double(cameraToPosition.x)
+//            let cornerB = Double.pi / 2 - atan(tgA)
+//            if cameraToPosition.x < 0 {
+//                object.eulerAngles = SCNVector3(0, cornerB, 0)
+//            } else {
+//                object.eulerAngles = SCNVector3(0, Double.pi + cornerB, 0)
+//            }
+            return
+        }
         guard let cameraTransform = session.currentFrame?.camera.transform else {
             object.position = pos
             return
